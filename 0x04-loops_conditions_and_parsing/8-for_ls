@@ -3,8 +3,5 @@
 #in a list format
 
 for file in *; do
-    if [[ ! "$file" =~ ^\. && "$file" =~ - ]]; then
-        new_name="${file#*-}"
-        echo "$new_name"
-    fi
+        echo "$file" | cut -d"-" -f 2
 done
