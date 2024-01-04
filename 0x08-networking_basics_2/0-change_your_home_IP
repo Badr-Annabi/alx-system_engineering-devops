@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#This Bash script configures an Ubuntu server with the below requirements.
+
+cp /etc/hosts ~/hosts.n
+
+echo "127.0.0.2 localhost " >> ~/hosts.n
+echo "8.8.8.8 facebook.com" >> ~/hosts.n
+
+cp -f ~/hosts.n /etc/hosts
