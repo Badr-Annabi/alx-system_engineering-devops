@@ -1,6 +1,7 @@
 #This script installs flask
 
 package { 'Flask':
-ensure   => '2.1.0',
-provider => 'pip3',
+ensure          => 'present',
+provider        => 'pip3',
+install_options => ['==2.1.0'],
 }
