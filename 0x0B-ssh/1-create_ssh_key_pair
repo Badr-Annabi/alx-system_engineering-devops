@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#This bash script generates a key-pair
+
+private_key="school"
+
+key_bits=4096
+
+passphrase="betty"
+
+ssh-keygen -t rsa -b $key_bits -f ~/.ssh/$private_key -N $passphrase
