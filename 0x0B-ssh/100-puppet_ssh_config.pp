@@ -1,17 +1,18 @@
+#!/usr/bin/env bash
 #This script connect to a server without typing a password.
 
-file {'/etc/ssh/ssh_config':
-ensure => present,
-}
+include stdlib
 
 file_line { 'Turn off password auth':
-path  => '/etc/ssh/ssh_config',
-line  => 'PasswordAuthentification no',
-match => '^#PasswordAuthentification',
+ensure => present,
+path   => '/etc/ssh/ssh_config',
+line   => '    IdentityFile ~/.ssh/school',
+replace  => true,
 }
 
-file_line {'Declare identity file':
-path  => '/etc/ssh/ssh_config',
-line  => 'IdentityFile ~/.ssh/school',
-match => '^#IdentityFile',
+file_line { 'Declare identity file':
+ensure => present,
+path   => '/etc/ssh/ssh_config',
+line   => '    PasswordAuthentication no',
+match  => true,
 }
