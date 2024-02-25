@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 #This script connect to a server without typing a password.
 
 include stdlib
@@ -14,5 +13,5 @@ file_line { 'Declare identity file':
 ensure => present,
 path   => '/etc/ssh/ssh_config',
 line   => '    PasswordAuthentication no',
-match  => true,
+replace  => true,
 }
