@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#This bash script has a configuration for password Auth
+
+Host 54.237.33.154
+PasswordAuthentification no
+IdentifyFile ~/.ssh/school
+
