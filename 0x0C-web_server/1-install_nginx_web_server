@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 #This script installs nginx and configures it
 
-sudo apt-get update -y -qq && \
-	sudo apt-get install nginx -y
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+echo -e "Helllo World!" > /var/www/html/index.nginx-debian.html
 sudo service nginx start
-
-sudo ufw allow 'Nginx HTTP'
-
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
-echo -e "Helllo World!" | dd status=none of=/var/www/html/index.nginx-debian.html
-sudo service nginx restart
