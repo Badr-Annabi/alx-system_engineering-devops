@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#This script installs nginx and configures it
+
+sudo apt-get update -y -qq && \
+sudo apt-get install nginx -y
+
+sudo service nginx start
+
+# allowing nginx on firewall
+sudo ufw allow 'Nginx HTTP'
+
+# giving a ownership permission to the user to website files
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chown -R 755 /var/www
+
+#creating an index
+echo -e "Hello World" | dd status=none of=/var/www/html/index.nginx-debian.html
+
+# Restarting nginx
+sudo service nginx restart
