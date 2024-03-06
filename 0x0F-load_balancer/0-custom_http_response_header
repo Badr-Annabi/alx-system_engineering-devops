@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#This script installs nginx and configures it
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+HOST_NAME=$(hostname)
+HEADER="\\\n\tadd_header X-Served-By $HOST_NAME;\n"
+FIND=$(grep "X-Served-By" /etc/nginx/sites-available/default)
+
+if [[ -z $FIND ]]; then
+	sudo sed -i "24i $HEADER" /etc/nginx/sites-available/default
+fi
+#Setup and giving permissions for index-debian.html and error.html
+
+echo -e "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+# Add the redirection rule directly to the Nginx configuration file
+sudo sed -i '24i\    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# Add the nginx conf for error page 404
+sudo sed -i '24i\    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_404.html
+sudo sed -i '46i\ error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
+
