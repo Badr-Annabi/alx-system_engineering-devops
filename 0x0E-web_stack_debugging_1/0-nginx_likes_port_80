@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Open port 80 correctly
-
+# Open port 80 properly
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
