@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # This bash script configures nginx to open port 80 properly
 
-rm etc/nginx/sites-enabled/default
-ln -s  etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
-service nginx restart
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+service nginx start
