@@ -32,16 +32,17 @@ defaults
 	errorfile 502 /etc/haproxy/errors/502.http
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
-frontend badr-annabi.tech
+
+frontend http_frontend
   bind *:80
   http-request redirect scheme https code 301 unless { ssl_fc }
-  http-request set-header X_Forwarded-Proto http
+  http-request set-header X-Forwarded-Proto http
   default_backend web-servers
 
-frontend badr-annabi.tech
+frontend https_frontend
   bind *:443 ssl crt /etc/haproxy/certs/badr-annabi.tech
   http-request set-header X-Forwarded-Proto https
-  default_backend web_servers
+  default_backend web-servers
 
 backend web-servers
   balance roundrobin
