@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This bash script configures nginx to open port 80 properly
-
-sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-service nginx start
+rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
