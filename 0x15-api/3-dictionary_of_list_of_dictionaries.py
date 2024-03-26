@@ -22,7 +22,7 @@ if __name__ == "__main__":
                         "username": user.get('username'),
                         "task": task.get('title'),
                         "completed": task.get('completed')}
-            tasks.append(Taskdict)
+                tasks.append(Taskdict)
         alldict[user.get('id')] = tasks
 
     with open('todo_all_employees.json', 'w') as jsonfall:
