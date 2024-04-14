@@ -1,4 +1,5 @@
-# Technical Postmortem: Debugging a 500 Internal Server Error in an Apache Server using Wordpress.
+![debugging](https://github.com/Badr-Annabi/alx-system_engineering-devops/assets/73182348/5d2fc539-b704-48f5-9ac7-d418946e5efa)
+Technical Postmortem: Debugging a 500 Internal Server Error in an Apache Server using Wordpress.
 
 ## Issue Summary:
 
