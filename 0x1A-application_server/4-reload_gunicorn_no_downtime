@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This bash script reloads gunicorn no downtime
+
+pgrep gunicorn | xargs -I {} kill -HUP {}
